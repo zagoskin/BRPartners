@@ -153,6 +153,8 @@ Os erros de domain usam codigos de erro customizados, para que o cliente possa t
 
 ### Followup
 
-O unico domain event implementado é o `ContractCreatedDomainEvent` e o handler dele eventualmente transforma ele numa versão de integração para ser consumido por outros serviços. É publicado num exchange de RabbitMQ usando fanout, pelo que não sera consumido por ninguém se não estiver declarada uma fila que processe ele do exchange.
+O unico domain event implementado é o `ContractCreatedDomainEvent` e o handler dele eventualmente transforma ele numa versão de integração para ser consumido por outros serviços. É publicado num exchange de **RabbitMQ** usando fanout, pelo que não sera consumido por ninguém se não estiver declarada uma fila que processe ele do exchange.
 
 **Se o projeto de `VendorManagement` é executado sem ter nunca executado o Mailer, a fila não existe e a mensagem pode se perder, por isso é recomendado primeiro rodar uma vez os dois projetos para a fila estar declarada.**
+
+> Os emails enviados podem ser visualizados no servidor de email Papercut seguindo o link http://localhost:37408/, porem podem demorar em aparecer uns minutos
