@@ -24,7 +24,7 @@ internal sealed class CreateContractCommandHandler : IRequestHandler<CreateContr
         var vendorId = VendorId.Create(request.VendorId);
         if (!await _vendorRepository.ExistsByIdAsync(vendorId, cancellationToken))
         {
-            return Error.Validation(description: $"Vendor '{request.VendorId}' is invalid");
+            return Error.Validation(description: $"Vendor '{request.VendorId}' does not exist");
         }
 
         var createContractResult = Contract.Create(

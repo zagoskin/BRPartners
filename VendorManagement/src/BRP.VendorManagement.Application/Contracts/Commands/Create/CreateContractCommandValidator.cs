@@ -15,6 +15,6 @@ internal sealed class CreateContractCommandValidator : AbstractValidator<CreateC
 
         RuleFor(c => c.DeadLineUtc)
             .Must(date => date != DateTime.MinValue)
-            .WithMessage("DeadLineUtc is required");
+            .WithMessage("DeadLineUtc is required and cannot be a minimum value");
     }
 }
