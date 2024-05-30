@@ -1,0 +1,17 @@
+[
+  // Create a contract BAD (vendor not exists)
+  {
+    "vendorId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "title": "My first contract",
+    "deadLineUtc": "2030-05-30",
+    "estimatedValue": 1000000
+  }
+
+  // Create a contract OK
+  {
+    "vendorId": "992a4f6a-4010-44ec-83b2-3718bb9e6e58",
+    "title": "My first contract",
+    "deadLineUtc": "2030-05-30",
+    "estimatedValue": 1000000
+  }
+]

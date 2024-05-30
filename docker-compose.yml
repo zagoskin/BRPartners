@@ -1,0 +1,23 @@
+services:
+
+  papercut:
+    image: jijiechen/papercut:latest
+    container_name: brp_papercut
+    ports:
+    - "25:25"
+    - "37408:37408"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: brp_rabbitmq
+    ports:
+    - "5672:5672"
+    - "15672:15672"
+    
+      
+  mongodb:
+    image: mongo
+    container_name: brp_mongodb
+    ports:
+      - "27017:27017"    
+  
