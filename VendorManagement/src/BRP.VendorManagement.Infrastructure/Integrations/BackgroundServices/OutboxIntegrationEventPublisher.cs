@@ -1,14 +1,11 @@
 ﻿using System.Reflection;
 using System.Text.Json;
 using BRP.VendorManagement.Infrastructure.Persistence;
-using BRPartners.Common.IntegrationEvents;
+using BRPartners.Shared.IntegrationEvents;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Polly;
-using Polly.Contrib.WaitAndRetry;
-using Polly.Retry;
 
 namespace BRP.VendorManagement.Infrastructure.Integrations.BackgroundServices;
 internal sealed class OutboxIntegrationEventPublisher : BackgroundService

@@ -1,7 +1,7 @@
 ﻿using BRP.VendorManagement.API.Mappings;
 using BRP.VendorManagement.Application.Vendors.Queries.GetById;
 using BRP.VendorManagement.Application.Vendors.Queries.List;
-using BRPartners.Common.Responses.VendorManagement;
+using BRPartners.Shared.Responses.VendorManagement;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

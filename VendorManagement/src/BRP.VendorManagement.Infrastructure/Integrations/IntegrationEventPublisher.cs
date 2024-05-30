@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
-using BRP.VendorManagement.Domain.Common.Abstractions;
-using BRPartners.Common.IntegrationEvents;
+using BRPartners.Shared.IntegrationEvents;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 

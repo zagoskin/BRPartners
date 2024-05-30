@@ -1,6 +1,6 @@
 ﻿using BRP.Mailer.API.Application.Integrations;
 using BRP.Mailer.API.Domain;
-using BRPartners.Common.IntegrationEvents.VendorManagement;
+using BRPartners.Shared.IntegrationEvents.VendorManagement;
 using MediatR;
 
 namespace BRP.Mailer.API.Application.Integrations.Contracts.Created;

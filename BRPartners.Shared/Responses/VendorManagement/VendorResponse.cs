@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace BRPartners.Common.Responses.VendorManagement;
+namespace BRPartners.Shared.Responses.VendorManagement;
 
 public class VendorResponse
 {

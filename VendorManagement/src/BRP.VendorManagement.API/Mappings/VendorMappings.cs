@@ -1,5 +1,5 @@
 ﻿using BRP.VendorManagement.Domain.VendorAggregate;
-using BRPartners.Common.Responses.VendorManagement;
+using BRPartners.Shared.Responses.VendorManagement;
 
 namespace BRP.VendorManagement.API.Mappings;
 

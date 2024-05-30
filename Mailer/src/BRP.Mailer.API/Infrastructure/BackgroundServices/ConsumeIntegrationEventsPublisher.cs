@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Text;
 using System.Text.Json;
-using BRPartners.Common.IntegrationEvents;
+using BRPartners.Shared.IntegrationEvents;
 using MediatR;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;

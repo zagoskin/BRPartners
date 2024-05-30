@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BRP.VendorManagement.Infras
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BRP.VendorManagement.Tests.Unit", "VendorManagement\tests\BRP.VendorManagement.Tests.Unit\BRP.VendorManagement.Tests.Unit.csproj", "{689CD3FE-A6E4-489E-8FA4-0EBBF24A3F6D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BRPartners.Shared", "BRPartners.Common\BRPartners.Shared.csproj", "{037DAB27-CD9B-4DD5-A45B-5EE325DB6B06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BRPartners.Shared", "BRPartners.Shared\BRPartners.Shared.csproj", "{037DAB27-CD9B-4DD5-A45B-5EE325DB6B06}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mailer", "Mailer", "{51B785B8-68D5-4D78-B6B3-290BFF584FA5}"
 EndProject

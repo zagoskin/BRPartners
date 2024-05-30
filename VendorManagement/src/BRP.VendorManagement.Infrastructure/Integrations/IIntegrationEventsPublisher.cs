@@ -1,4 +1,4 @@
-﻿using BRPartners.Common.IntegrationEvents;
+﻿using BRPartners.Shared.IntegrationEvents;
 
 namespace BRP.VendorManagement.Infrastructure.Integrations;
 

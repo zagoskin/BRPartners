@@ -1,13 +1,11 @@
 ﻿using System.Text.Json;
-using BRP.VendorManagement.Domain.Common.Abstractions;
 using BRP.VendorManagement.Domain.ContractAggregate;
 using BRP.VendorManagement.Domain.ContractAggregate.Events;
 using BRP.VendorManagement.Domain.ContractAggregate.ValueObjects;
-using BRP.VendorManagement.Domain.VendorAggregate.ValueObjects;
 using BRP.VendorManagement.Infrastructure.Persistence;
 using BRP.VendorManagement.Infrastructure.Persistence.OutboxIntegrationEvents;
-using BRPartners.Common.IntegrationEvents;
-using BRPartners.Common.IntegrationEvents.VendorManagement;
+using BRPartners.Shared.IntegrationEvents;
+using BRPartners.Shared.IntegrationEvents.VendorManagement;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
