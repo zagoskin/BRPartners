@@ -1,4 +1,6 @@
 ﻿using System.Text.Json.Serialization;
+using BRP.Mailer.API.Application.Mails.Commands.SendEmail;
+using BRP.Mailer.API.Infrastructure;
 
 namespace BRP.Mailer.API.Domain;
 
@@ -25,6 +27,5 @@ internal sealed class OutboxEmail
         IsHtmlBody = isHtmlBody;
     }
 
-    
     private OutboxEmail() { }
 }

@@ -1,4 +1,5 @@
-﻿using ErrorOr;
+﻿using BRP.Mailer.API.Infrastructure;
+using ErrorOr;
 using MailKit.Net.Smtp;
 using MediatR;
 using MimeKit;
@@ -17,7 +18,7 @@ internal sealed class SendEmailCommandHandler : IRequestHandler<SendEmailCommand
     }
 
     public async Task<ErrorOr<Success>> Handle(SendEmailCommand request, CancellationToken cancellationToken)
-    {
+    {        
         _logger.LogInformation(
             "[{Handler}] Attempting to send email to {To} from {From} with subject {Subject}",
             nameof(SendEmailCommandHandler),

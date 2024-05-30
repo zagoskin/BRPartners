@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		docker-compose.yml = docker-compose.yml
 		examples.md = examples.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VendorManagement", "VendorManagement", "{8E25F28B-CE52-4438-9786-12606285487B}"
@@ -30,9 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BRPartners.Shared", "BRPart
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mailer", "Mailer", "{51B785B8-68D5-4D78-B6B3-290BFF584FA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRP.Mailer.API", "Mailer\src\BRP.Mailer.API\BRP.Mailer.API.csproj", "{17A9CE2C-DCD2-41E9-BB4D-D3C1B0E53C9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BRP.Mailer.API", "Mailer\src\BRP.Mailer.API\BRP.Mailer.API.csproj", "{17A9CE2C-DCD2-41E9-BB4D-D3C1B0E53C9D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8332EB4B-7E39-46F7-988D-7360ED3228EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D1F5D7A9-A4B7-427C-A697-788A7E2CA60D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BRP.Mailer.Tests.Arch", "Mailer\tests\BRP.Mailer.Tests.Architecture\BRP.Mailer.Tests.Arch.csproj", "{84075D30-A32F-408A-9CC0-36D4DE945384}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +73,10 @@ Global
 		{17A9CE2C-DCD2-41E9-BB4D-D3C1B0E53C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17A9CE2C-DCD2-41E9-BB4D-D3C1B0E53C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17A9CE2C-DCD2-41E9-BB4D-D3C1B0E53C9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84075D30-A32F-408A-9CC0-36D4DE945384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84075D30-A32F-408A-9CC0-36D4DE945384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84075D30-A32F-408A-9CC0-36D4DE945384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84075D30-A32F-408A-9CC0-36D4DE945384}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +91,8 @@ Global
 		{689CD3FE-A6E4-489E-8FA4-0EBBF24A3F6D} = {FBFE4B57-011D-4FC3-9A8A-C6B612EC241B}
 		{17A9CE2C-DCD2-41E9-BB4D-D3C1B0E53C9D} = {8332EB4B-7E39-46F7-988D-7360ED3228EE}
 		{8332EB4B-7E39-46F7-988D-7360ED3228EE} = {51B785B8-68D5-4D78-B6B3-290BFF584FA5}
+		{D1F5D7A9-A4B7-427C-A697-788A7E2CA60D} = {51B785B8-68D5-4D78-B6B3-290BFF584FA5}
+		{84075D30-A32F-408A-9CC0-36D4DE945384} = {D1F5D7A9-A4B7-427C-A697-788A7E2CA60D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB033572-4AA3-4527-811C-5179A07BB992}
