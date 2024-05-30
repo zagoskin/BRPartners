@@ -94,6 +94,12 @@ A estrutura respeita o mesmo padrão de Clean Architecture, sendo simplificado e
     - Serviço de outbox (representando um "repository")
     - Serviço de persistence na collection de MongoDB
 
+### Projeto de architecture tests
+
+Este projeto de tests tem como objetivo forçar o respeito pela arquitetura no padrão Clean Architecture. Como a API Mailer foi feita com pastas, não existe realmente um impedimento pro desenvolvedor criar referencias erradas. Mediante o uso desses testes ainda pode ser protegida a estrutura sem criar complexidade desnecessária num serviço minimo ao criar multiplos projetos.
+
+É claro que se o projeto for evoluir, migrar para estrutura de projetos pode significar um retrabalho pior do que ter começado com projetos, pelo que deve ser analisado com cuidado antes de usar um esquema simplificado como o do exemplo.
+
 ## Shared
 
 Simula um package comum onde seriam publicados os "contratos" (requests, responses, messages) de cada projeto, para manter uma interface uniforme. Também define algumas abstrações a ser aproveitadas pelos consumidores
