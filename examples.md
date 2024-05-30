@@ -1,21 +1,18 @@
-# Examples to try the API
-  
-Para rodar o exemplo, È necess·rio ter o docker e docker-compose instalados e rodar o comando `docker-compose up` na raiz do projeto.
-TambÈm È necess·rio rodar a VendorManagementAPI, e È recomendado ter os exemplos de microserviÁos tambÈm para visualizar
-a comunicaÁ„o entre eles.
+# Exemplos para testar o sistema
 
-## Create a valid contract
+## Cria√ß√£o de Contract v√°lido
 
-Representa um fluxo de criaÁ„o normal de um contrato. Um 'domain event' È disparado e fica salvo no banco de dados.
+Representa um fluxo de cria√ß√£o normal de um contrato. Um 'domain event' √© disparado e fica salvo no banco de dados.
 
 #### Request
+
 ```json
 // POST /contracts
 {
-    "vendorId": "992a4f6a-4010-44ec-83b2-3718bb9e6e58",
-    "title": "My first contract",
-    "deadLineUtc": "2030-05-30",
-    "estimatedValue": 1000000
+  "vendorId": "992a4f6a-4010-44ec-83b2-3718bb9e6e58",
+  "title": "My first contract",
+  "deadLineUtc": "2030-05-30",
+  "estimatedValue": 1000000
 }
 ```
 
@@ -23,77 +20,87 @@ Representa um fluxo de criaÁ„o normal de um contrato. Um 'domain event' È dispar
 
 ```json
 {
-    "id": "00000000-0000-0000-0000-000000000000", // some guid
-    "vendorId": "992a4f6a-4010-44ec-83b2-3718bb9e6e58",
-    "title": "My first contract",
-    "deadLineUtc": "2030-05-30",
-    "estimatedValue": 1000000
+  "id": "00000000-0000-0000-0000-000000000000", // some guid
+  "vendorId": "992a4f6a-4010-44ec-83b2-3718bb9e6e58",
+  "title": "My first contract",
+  "deadLineUtc": "2030-05-30",
+  "estimatedValue": 1000000
 }
 ```
 
-### Followup
+## Followup
 
-… possivel visualizar o evento criado usando o endpoint **GET** [/outbox/domain-events](/outbox/domain-events) 
-j· que o serviÁo de background que processa eles tem um delay configurado manualmente.
+√â possivel visualizar o evento criado usando o endpoint **GET** [/outbox/domain-events](/outbox/domain-events)
+j√° que o servi√ßo de background que processa eles tem um delay configurado manualmente.
+
+> Se quiser editar o delay para poder visualizar com calma, ir no arquivo appsettings.Development.json
 
 > Esse controller foi facilitado apenas para fins de fazer essa demo
 
-## Create an invalid contract
+## Visualizando RabbitMQ
+
+Entrando no site http://localhost:15672/ com usu√°rio e senha "guest", na aba Exchanges existe um com nome `IntegrationEvents`, que √© onde o sistema VendorManagement publica seus eventos. Na aba Queues and Streams existe uma fila com nome `emails-queue` onde o servi√ßo Mailer espera receber as suas mensagens para poder processar-las.
+
+## Visualizando os emails enviados com PaperCut
+
+Entrando em http://localhost:37408/ aparecem na tela os emails enviados. Existem bot√µes de `Inbox` e refresh para atualizar a pagina e clicando em cada email poder ser visualizados os textos e headers dele.
+
+## Cria√ß√£o de contrato inv√°lido
 
 ### Vendor not found
----
 
 #### Request
+
 ```json
 {
-    "vendorId": "992a1111-4010-44ec-83b2-3718bb9e6e58",
-    "title": "My first contract",
-    "deadLineUtc": "2030-05-30",
-    "estimatedValue": 1000000
+  "vendorId": "992a1111-4010-44ec-83b2-3718bb9e6e58",
+  "title": "My first contract",
+  "deadLineUtc": "2030-05-30",
+  "estimatedValue": 1000000
 }
 ```
 
-A resposta È um erro de validaÁ„o, seguindo o padr„o de erros ProblemDetails. No caso È usada uma extens„o,
-com o objeto ValidationProblemDetails, que permite retornar erros de validaÁ„o num formato de `Dictionary<string, string[]>`.
+A resposta √© um erro de valida√ß√£o, seguindo o padr√£o de erros ProblemDetails. No caso √© usada uma extens√£o, com o objeto `ValidationProblemDetails`, que permite retornar erros de valida√ß√£o num formato de `Dictionary<string, string[]>`.
 
 #### Response
+
 ```json
 {
   "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
   "title": "One or more validation errors occurred.",
   "status": 400,
-  "traceId": "00-2b0408e099f9068b94336cef0ecfb9e0-2adf6dbdc1e4efc0-00",
+  "traceId": "00-2b0408e099f9068b94336cef0ecfb9e0-2adf6dbdc1e4efc0-00", // id unico
   "errors": {
     "General.Validation": [
-      "Vendor '992a1111-4010-44ec-83b2-3718bb9e6e58' is invalid"
+      "Vendor '992a1111-4010-44ec-83b2-3718bb9e6e58' does not exist"
     ]
   }
 }
 ```
 
-> Todos os erros s„o tratados e retornados no formato ProblemDetails, seguindo o padr„o da RFC 7807
+> Todos os erros s√£o tratados e retornados no formato ProblemDetails, seguindo o padr√£o da [RFC 7807](https://datatracker.ietf.org/doc/html/rfc7807)
 
 ## Invalid data
 
-Existem duas camadas de validaÁ„o. No pipeline do MediatR existe um validador que apenas filtra valores que 
-s„o mais "obviamente" inv·lidos, como valores nulos ou vazios. J· no domain, foi escolhido o padr„o factory
-para encapsular a criaÁ„o de um contrato, e nesse ponto È feita a validaÁ„o de regras de negÛcio.
+Existem duas camadas de valida√ß√£o. No pipeline do MediatR existe um validador que apenas filtra valores que s√£o mais "obviamente" inv√°lidos, como valores nulos ou vazios. J√° no domain, foi escolhido o padr√£o factory para encapsular a cria√ß√£o de um contrato, e nesse ponto √© feita a valida√ß√£o de regras de neg√≥cio.
+
+O pipeline do MediatR √© implementado usando um `IPipelineBehavior`
 
 #### Request
 
-> Esse request apenas È filtrado no pipeline. N„o È validado o valor negativo de `estimatedValue` de propÛsito
-para testar depois a validaÁ„o dele no modelo de domain junto com a data.
+> Esse request apenas √© filtrado no pipeline. N√£o √© validado o valor negativo de `estimatedValue` de prop√≥sito para testar depois a valida√ß√£o dele no modelo de domain junto com a data.
 
 ```json
 {
-    "vendorId": "992a4f6a-4010-44ec-83b2-3718bb9e6e58",
-    "title": "",
-    "deadLineUtc": "0001-01-01",
-    "estimatedValue": -5
+  "vendorId": "992a4f6a-4010-44ec-83b2-3718bb9e6e58",
+  "title": "",
+  "deadLineUtc": "0001-01-01",
+  "estimatedValue": -5
 }
 ```
 
 #### Response 400
+
 ```json
 {
   "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
@@ -102,28 +109,31 @@ para testar depois a validaÁ„o dele no modelo de domain junto com a data.
   "traceId": "00-35aeaa9c083089965b1cfd862500a56f-c5f8b2fef91521e7-00",
   "errors": {
     "Title": [
-      "'Title' no deberÌa estar vacÌo."
+      "Title is required"
     ],
     "DeadLineUtc": [
-      "DeadLineUtc is required"
+      "DeadLineUtc is required and cannot be a minimum value"
     ]
   }
 ```
 
+---
+
 #### Request
 
-> Esse request passa o pipeline. Mas È invalidado pelo modelo do domain.
+Esse request passa o pipeline. Mas √© invalidado pelo modelo do domain.
 
 ```json
 {
-    "vendorId": "992a4f6a-4010-44ec-83b2-3718bb9e6e58",
-    "title": "My first invalid contract",
-    "deadLineUtc": "2010-01-01",
-    "estimatedValue": -5
+  "vendorId": "992a4f6a-4010-44ec-83b2-3718bb9e6e58",
+  "title": "My first invalid contract",
+  "deadLineUtc": "2010-01-01",
+  "estimatedValue": -5
 }
 ```
 
 #### Response 400
+
 ```json
 {
   "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
@@ -131,19 +141,18 @@ para testar depois a validaÁ„o dele no modelo de domain junto com a data.
   "status": 400,
   "traceId": "00-89717efed139ebf4c374a07c8a56e6ac-d8112a81e9ed46dc-00",
   "errors": {
-    "Contract.DeadLineMustBeInTheFuture": [
-      "DeadLine must be in the future"
-    ],
+    "Contract.DeadLineMustBeInTheFuture": ["DeadLine must be in the future"],
     "Contract.EstimatedValueMustBeGreaterThanZero": [
       "EstimatedValue must be greater than 0"
     ]
   }
 }
 ```
-Os erros de domain usam codigos de erro customizados, para que o cliente possa tratar de forma mais especÌfica se quiser.
+
+Os erros de domain usam codigos de erro customizados, para que o cliente possa tratar de forma mais especÔøΩfica se quiser.
 
 ### Followup
 
-O unico domain event implementado È o `ContractCreatedDomainEvent` e o handler dele eventualmente transforma ele
-numa vers„o de integraÁ„o para ser consumido por outros serviÁos. … publicado num exchange de RabbitMQ usando fanout, pelo que n„o sera consumido
-por ninguÈm se n„o estiver declarada uma fila que processe ele do exchange.
+O unico domain event implementado √© o `ContractCreatedDomainEvent` e o handler dele eventualmente transforma ele numa vers√£o de integra√ß√£o para ser consumido por outros servi√ßos. √â publicado num exchange de RabbitMQ usando fanout, pelo que n√£o sera consumido por ningu√©m se n√£o estiver declarada uma fila que processe ele do exchange.
+
+**Se o projeto de `VendorManagement` √© executado sem ter nunca executado o Mailer, a fila n√£o existe e a mensagem pode se perder, por isso √© recomendado primeiro rodar uma vez os dois projetos para a fila estar declarada.**
