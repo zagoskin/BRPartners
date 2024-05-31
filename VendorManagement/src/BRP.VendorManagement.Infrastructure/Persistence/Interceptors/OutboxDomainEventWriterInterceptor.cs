@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using BRP.VendorManagement.Domain.Common.Models;
+using BRP.VendorManagement.Domain.Common.Abstractions;
 using BRP.VendorManagement.Infrastructure.Persistence.OutboxDomainEvents;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;

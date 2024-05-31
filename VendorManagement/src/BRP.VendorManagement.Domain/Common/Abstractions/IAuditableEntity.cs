@@ -1,4 +1,4 @@
-﻿namespace BRP.VendorManagement.Domain.Common.Models;
+﻿namespace BRP.VendorManagement.Domain.Common.Abstractions;
 
 public interface IAuditableEntity
 {

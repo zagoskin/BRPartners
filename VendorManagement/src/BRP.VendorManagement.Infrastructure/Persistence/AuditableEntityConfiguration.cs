@@ -1,4 +1,4 @@
-﻿using BRP.VendorManagement.Domain.Common.Models;
+﻿using BRP.VendorManagement.Domain.Common.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
